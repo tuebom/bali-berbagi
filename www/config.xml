@@ -18,7 +18,7 @@
 
     <preference name="permissions" value="none"/>
 
-    <content src="index.html" />
+    <content src="login.html" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
     <preference name="StatusBarOverlaysWebView" value="false" />

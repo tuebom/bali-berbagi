@@ -1,11 +1,69 @@
 <html><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
-  </head><body background="../assets/img/biru.jpg">
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="../cordova.js"></script>
+
+    <script src="../assets/js/admob.js"></script>
+
+	<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		 var host = localStorage.getItem('host');
+		 
+		 if(host === "undefined")
+		 {
+			 host = "212.24.111.23";
+		 }
+		 
+		 $("#kirim").click(function(){
+			 var mbrid=$("#mbrid").val();
+			 var nominal=$("#nominal").val();
+			 var nom=parseInt(nominal);
+			 var pin=$("#pin").val();
+			 
+			 var dataString="mbrid="+mbrid+"&nominal="+nominal+"&pin="+pin;
+			 
+			 if($.trim(mbrid).length>0 & $.trim(nominal).length>0 & $.trim(pin).length>0)
+			 {
+
+				 if (nom < 5000) {
+					alert("Nominal transaksi belanja minimal 5000 rupiah.");
+					return false;
+				 }
+				 
+				 $.ajax({
+				 type: "POST",
+				 url:"http://" + host + "/berbagi/belanja",
+				 data: dataString,
+				 crossDomain: true,
+				 cache: false,
+				 beforeSend: function(){ $("#kirim").val('Memproses..');},
+				 success: function(data){
+				 if(data=="success")
+				 {
+					 //alert("Transaksi sukses!");
+					 $("#kirim").val('Kirim');
+				 }
+				 /*else if(data=="error")
+				 {
+					 alert("Transaksi gagal!");
+				 }*/
+				 }
+				 });
+			 }return false;
+		 });
+	});
+	</script>
+
+	</head><body background="../assets/img/biru.jpg">
     <div class="section">
       <div class="container">
         <div class="row">
@@ -21,10 +79,10 @@
               </div>
               <div class="form-group">
                 <label class="control-label" for="pin">Nomor PIN</label>
-                <input class="form-control input-lg" id="pin" type="number">
+                <input class="form-control input-lg" id="pin" type="password">
               </div>
 			  <div class="text-center">
-				  <button type="submit" class="btn btn-default">Kirim</button>
+				  <button type="button" id="kirim" class="btn btn-default">Kirim</button>
 				  <button type="button" class="btn btn-default" onclick="javascript:history.back()">Batal</button>
 			  </div>
             </form>

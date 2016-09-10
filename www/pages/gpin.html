@@ -16,31 +16,18 @@
 
 	$(document).ready(function()
 	{
-		 var host = localStorage.getItem('host');
-		 
-		 if(host === "undefined")
-		 {
-			 host = "212.24.111.23";
-		 }
-		 
 		 $("#kirim").click(function(){
-			 var nominal=$("#nominal").val();
-			 var nom=parseInt(nominal);
-			 var pin=$("#pin").val();
+			 var pinlama=$("#pinlama").val();
+			 var pinbaru=$("#pinbaru").val();
 			 
-			 var dataString="nominal="+nominal+"&pin="+pin;
+			 var dataString="pinlama="+pinlama+"&pinbaru="+pinbaru;
 			 
-			 if($.trim(nominal).length>0 & $.trim(pin).length>0)
+			 if($.trim(pinlama).length>0 & $.trim(pinbaru).length>0)
 			 {
-
-				 if (nom < 5000) {
-					alert("Nominal transfer bonus minimal 5000 rupiah.");
-					return false;
-				 }
 
 				 $.ajax({
 				 type: "POST",
-				 url:"http://" + host + "/berbagi/tbonus",
+				 url:"http://localhost/berbagi/gpin",
 				 data: dataString,
 				 crossDomain: true,
 				 cache: false,
@@ -67,14 +54,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <form role="form">
                             <div class="form-group">
-                                <label class="control-label" for="nominal">Nominal Transfer</label>
-                                <input class="form-control input-lg" id="nominal" type="number">
+                                <label class="control-label" for="pin">Nomor PIN Lama</label>
+                                <input class="form-control input-lg" id="pinlama" type="number">
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="pin">Nomor PIN</label>
-                                <input class="form-control input-lg" id="pin" type="number">
+                                <label class="control-label" for="pin">Nomor PIN Baru</label>
+                                <input class="form-control input-lg" id="pinbaru" type="number">
                             </div>
 						  <div class="text-center">
 							  <button type="button" id="kirim" class="btn btn-default">Kirim</button>

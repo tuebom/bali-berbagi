@@ -1,10 +1,56 @@
 <html><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="../cordova.js"></script>
+
+    <script src="../assets/js/admob.js"></script>
+
+	<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		 $("#kirim").click(function(){
+			 var nopel=$("#nopel").val();
+			 var nominal=$("#nominal").val();
+			 var nohp=$("#nohp").val();
+			 var pin=$("#pin").val();
+			 
+			 var dataString="nohp="+nohp+"&nopel="+nopel+"&nominal="+nominal+"&pin="+pin;
+			 
+			 if($.trim(nohp).length>0 & $.trim(nopel).length>0 & $.trim(nominal).length>0 & $.trim(pin).length>0)
+			 {
+
+				 $.ajax({
+				 type: "POST",
+				 url:"http://localhost/berbagi/pln",
+				 data: dataString,
+				 crossDomain: true,
+				 cache: false,
+				 beforeSend: function(){ $("#kirim").val('Memproses..');},
+				 success: function(data){
+				 if(data=="success")
+				 {
+					 //alert("Transaksi sukses!");
+					 $("#kirim").val('Kirim');
+				 }
+				 /*else if(data=="error")
+				 {
+					 alert("Transaksi gagal!");
+				 }*/
+				 }
+				 });
+			 }return false;
+		 });
+	});
+	</script>
+
 	</head><body background="../assets/img/biru.jpg">
     <div class="section">
       <div class="container">
@@ -13,7 +59,7 @@
             <form role="form">
               <div class="form-group">
                 <label class="control-label" for="nopel" contenteditable="true">Nomor Pelanggan</label>
-                <input class="form-control input-lg" id="nopel" type="number">
+                <input class="form-control input-lg" id="nopel" type="number" autocomplete="off">
               </div>
               <div class="form-group">
                 <label class="control-label" for="nominal">Nominal</label>
@@ -22,7 +68,7 @@
                 </select>
               </div>
               <div class="form-group">
-                <label class="control-label" for="nohp" contenteditable="true">Nomor HP Kirim Token</label>
+                <label class="control-label" for="nohp" contenteditable="true" autocomplete="off">Nomor HP Kirim Token</label>
                 <input class="form-control input-lg" id="nohp" type="number">
               </div>
               <div class="form-group">
@@ -30,7 +76,7 @@
                 <input class="form-control input-lg" id="pin" type="number">
               </div>
 			  <div class="text-center">
-				  <button type="submit" class="btn btn-default">Kirim</button>
+				  <button type="button" id="kirim" class="btn btn-default">Kirim</button>
 				  <button type="button" class="btn btn-default" onclick="javascript:history.back()">Batal</button>
 			  </div>
             </form>

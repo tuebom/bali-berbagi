@@ -1,15 +1,41 @@
 <html><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" type="text/css">
 	<style>
 	.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
     border: none;
 	}
 	</style>
+
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->    <script src="../cordova.js"></script>
+
+    <script src="../assets/js/admob.js"></script>
+
+	<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		 var host = localStorage.getItem('host');
+		 
+		 if(host === "undefined")
+		 {
+			 host = "212.24.111.23";
+		 }
+		 
+		 $("#simpan").click(function(){
+			 var host=$("#host").val();
+			 if($.trim(host).length>0){
+				 localStorage.setItem('host') = host;
+			 }
+		 });
+	});
+	</script>
+
     </head><body background="../assets/img/biru.jpg">
     <div class="section">
       <div class="row text-center">
@@ -33,7 +59,7 @@
                 </tr>
                 <tr>
                   <td>
-                    <a href="..\pages\isipulsa.html"><img src="../assets/img/ip100.png" class="center-block img-responsive"></a>
+                    <a href="..\pages\cekharga.html"><img src="../assets/img/ch.png" class="center-block img-responsive"></a>
                   </td>
                   <td>
                     <a href="javascript:void(0)"><img src="../assets/img/cb.png" class="center-block img-responsive"></a>
@@ -44,13 +70,12 @@
                 </tr>
                 <tr>
                   <td>
+                    <a href="..\pages\gpin.html"><img src="../assets/img/gpin100.png" class="center-block img-responsive"></a>
+                  </td>
+                  <td>
                     <a href="..\pages\setting.html"><img src="../assets/img/setting100.png" class="center-block img-responsive"></a>
                   </td>
                   <td>
-                    <a href="..\pages\cekharga.html"><img src="../assets/img/ch.png" class="center-block img-responsive"></a>
-                  </td>
-                  <td>
-                    <a href="..\pages\gpin.html"><img src="../assets/img/gpin100.png" class="center-block img-responsive"></a>
                   </td>
                 </tr>
               </tbody>

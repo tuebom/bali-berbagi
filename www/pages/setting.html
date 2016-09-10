@@ -1,0 +1,55 @@
+<html><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="../cordova.js"></script>
+
+    <script src="../assets/js/admob.js"></script>
+
+	<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		 var host = localStorage.getItem('host');
+		 
+		 if(host !== "undefined")
+		 {
+			 $("#host").val(host);
+		 }
+		 
+		 $("#simpan").click(function(){
+			 var host=$("#host").val();
+			 if($.trim(host).length>0){
+				 localStorage.setItem('host') = host;
+			 }
+		 });
+	});
+	</script>
+
+	</head><body background="../assets/img/biru.jpg">
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label" for="pin">Alamat Server</label>
+                                <input class="form-control input-lg" id="host" type="text" value="212.24.111.23">
+                            </div>
+						  <div class="text-center">
+							  <button type="button" id="simpan" class="btn btn-default">Simpan</button>
+							  <button type="button" class="btn btn-default" onclick="javascript:history.back()">Batal</button>
+						  </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+</body></html>

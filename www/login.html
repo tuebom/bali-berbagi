@@ -1,0 +1,119 @@
+<html>
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+ <link rel="stylesheet" type="text/css" href="css/ionic.css">
+ <script type="text/javascript" src="js/jquery.min.js"></script>
+
+ <script type="text/javascript">
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+	
+	console.log("Device Ready");
+
+	var push = PushNotification.init({
+		"android": {
+			"senderID": "597497239727"
+		},
+		"ios": {
+			"sound": true,
+			"vibration": true,
+			"badge": true
+		},
+		"windows": {}
+	});
+	console.log('after init');
+
+	push.on('registration', function(data) {
+		console.log('registration event: ' + data.registrationId);
+		document.getElementById("gcmid").value = data.registrationId;
+		
+		var oldRegId = localStorage.getItem('registrationId');
+		if (oldRegId !== data.registrationId) {
+			// Save new registration ID
+			localStorage.setItem('registrationId', data.registrationId);
+			// Post registrationId to your app server as the value has changed
+		}
+	});
+
+	push.on('error', function(e) {
+		console.log("push error = " + e.message);
+	});
+
+	push.on('notification', function(data) {
+		console.log('notification event');
+		navigator.notification.alert(
+			data.message,         // message
+			null,                 // callback
+			data.title,           // title
+			'Ok'                  // buttonName
+		);
+   });
+}
+
+$(document).ready(function()
+ {
+	 var host = localStorage.getItem('host');
+	 
+	 if(host === "undefined")
+	 {
+		 host = "212.24.111.23";
+	 }
+	 
+	 $("#login").click(function(){
+		 var userid=$("#userid").val();
+		 var password=$("#password").val();
+		 
+		 var dataString="userid="+userid+"&password="+password;
+		 
+		 if($.trim(userid).length>0 & $.trim(password).length>0)
+		 {
+			 $.ajax({
+			 type: "POST",
+			 url:"http://" + host + "/berbagi/login",
+			 data: dataString,
+			 crossDomain: true,
+			 cache: false,
+			 beforeSend: function(){ $("#login").val('Memproses..');},
+			 success: function(data){
+			 if(data=="success")
+			 {
+				 //alert("Login berhasil!");
+				 $("#login").val('Log In');
+				 localStorage.setItem('mbrid') = userid;
+				 window.location.href = "index.html";
+			 }
+			 /*else if(data=="error")
+			 {
+				 alert("Transaksi gagal!");
+			 }*/
+			 }
+			 });
+		 }return false;
+	 });
+ });
+ </script>
+</head>
+<body>
+ <div class="bar bar-header bar-positive" style="margin-bottom:80px;">
+ <h1 class="title">Log In</h1>
+ <a class="button button-clear" href="register.html">Register</a>
+ </div><br/><br/>
+ <div class="list">
+ <input type="hidden" id="gcmid" value=""/>
+ <div class="item">
+ <label>ID User</label>
+ <input type="text" id="userid" value=""/>
+ </div>
+ <div class="item">
+ <label>Password</label>
+ <input type="text" id="password" value=""/>
+ </div>
+ <div class="item">
+ <input type="button" id="login" class="button button-block" value="Log In"/>
+ </div>
+ </div>
+</body>
+</html>

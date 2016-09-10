@@ -24,18 +24,24 @@
 		 }
 		 
 		 $("#kirim").click(function(){
-			 var nohp=$("#nohp").val();
-			 var paket=$("#paket").val();
+			 var mbrid=$("#mbrid").val();
+			 var nominal=$("#nominal").val();
+			 var nom=parseInt(nominal);
 			 var pin=$("#pin").val();
 			 
-			 var dataString="nohp="+nohp+"&paket="+paket+"&pin="+pin;
+			 var dataString="mbrid="+mbrid+"&nominal="+nominal+"&pin="+pin;
 			 
-			 if($.trim(nohp).length>0 & $.trim(paket).length>0 & $.trim(pin).length>0)
+			 if($.trim(mbrid).length>0 & $.trim(nominal).length>0 & $.trim(pin).length>0)
 			 {
 
+				 if (nom < 5000) {
+					alert("Nominal transfer saldo minimal 5000 rupiah.");
+					return false;
+				 }
+				 
 				 $.ajax({
 				 type: "POST",
-				 url:"http://" + host + "/berbagi/data",
+				 url:"http://" + host + "/berbagi/tsaldo",
 				 data: dataString,
 				 crossDomain: true,
 				 cache: false,
@@ -56,29 +62,26 @@
 		 });
 	});
 	</script>
-
-	</head><body background="../assets/img/biru.jpg">
+    </head><body background="../assets/img/biru.jpg">
     <div class="section">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <form role="form">
               <div class="form-group">
-                <label class="control-label" for="nohp" contenteditable="true" autocomplete="off">Nomor HP Tujuan</label>
-                <input class="form-control input-lg" id="nohp" type="number">
+                <label class="control-label" for="mbrid" contenteditable="true">ID Member Tujuan</label>
+                <input class="form-control input-lg" id="mbrid" type="number">
               </div>
               <div class="form-group">
-                <label class="control-label" for="paket">Paket Data</label>
-                <select class="form-control input-lg" id="paket">
-                  <option></option>
-                </select>
+                <label class="control-label" for="nominal">Nominal Transfer</label>
+                <input class="form-control input-lg" id="nominal" type="number">
               </div>
               <div class="form-group">
                 <label class="control-label" for="pin">Nomor PIN</label>
-                <input class="form-control input-lg" id="pin" type="password">
+                <input class="form-control input-lg" id="pin" type="number">
               </div>
 			  <div class="text-center">
-				  <button type="button" id="kirim" class="btn btn-default">Kirim</button>
+				  <button type="submit" class="btn btn-default">Kirim</button>
 				  <button type="button" class="btn btn-default" onclick="javascript:history.back()">Batal</button>
 			  </div>
             </form>
