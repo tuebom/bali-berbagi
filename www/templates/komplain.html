@@ -1,0 +1,21 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Info/Komplain</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeKP()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="doSendInfo(trxData)">
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <!--<span class="input-label">Info</span>-->
+          <textarea rows="8" ng-model="trxData.info" required></textarea>
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit" ng-disabled="$invalid">Kirim</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

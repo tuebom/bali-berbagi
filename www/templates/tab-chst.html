@@ -1,0 +1,11 @@
+<ion-view view-title="Histori Transaksi">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="dtl in data" type="item-text-wrap">
+        <img ng-src="{{dtl.logo}}">
+        <div><h2>{{dtl.nama}}</h2><div class="item-right">{{dtl.tujuan}}</div></div>
+        <p>Jam: {{dtl.tme}}   Harga: {{dtl.nominal}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

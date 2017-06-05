@@ -1,0 +1,11 @@
+<ion-view view-title="{{services.name}}">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="dtl in data">
+        <img ng-src="{{services.logo}}">
+        <h2>{{dtl.nama}}</h2>
+        <h2><strong>{{dtl.harga}}</strong></h2>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

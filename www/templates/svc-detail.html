@@ -1,0 +1,11 @@
+<ion-view view-title="{{services.name}}">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="opr in services.items" href="#" ng-click="inputNumber(opr)">
+        <img ng-src="{{services.logo}}">
+        <h2>{{opr.info}}</h2>
+        <p>{{opr.kode}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

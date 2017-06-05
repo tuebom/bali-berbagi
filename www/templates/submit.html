@@ -1,0 +1,29 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">{{submitTitle}}</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeTrx()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form name="form" ng-submit="doProsesTrx(trxData)">
+      <div class="list">
+        <label id="grpNopel" class="item item-input" ng-show="trxPLN" class="ng-hide">
+          <span class="input-label">Nomor Pelanggan</span>
+          <input type="text" ng-model="trxData.nopel">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">No. HP Tujuan</span>
+          <input type="text" ng-model="trxData.tujuan" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">PIN</span>
+          <input type="password" ng-model="trxData.pin" required>
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit" ng-disabled="$invalid">Proses</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

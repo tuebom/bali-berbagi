@@ -1,0 +1,18 @@
+<ion-view view-title="Produk">
+  <ion-content>
+	  <div class="row">
+	   <div class="col">Saldo</div>
+	   <div class="col col-33">{{ saldo }}</div>
+	   <div class="col">Poin</div>
+	   <div class="col col-33">{{ poin }}</div>
+	  </div>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="opr in operators" type="item-text-wrap" on-tap="openItem(opr)">
+        <img ng-src="{{opr.logo}}">
+        <h2>{{opr.name}}</h2>
+        <p>{{opr.info}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

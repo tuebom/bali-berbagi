@@ -1,0 +1,12 @@
+<ion-view view-title="Cek Harga">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="opr in operators" type="item-text-wrap" on-tap="cekHarga(opr)">
+        <img ng-src="{{opr.logo}}">
+        <h2 class="tool">{{opr.name}}</h2>
+        <!--<p>{{opr.info}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>-->
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

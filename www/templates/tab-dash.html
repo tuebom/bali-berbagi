@@ -1,0 +1,64 @@
+<ion-view view-title="Histori Transaksi">
+  <ion-content>
+	  <div class="row">
+	   <div class="col">Saldo</div>
+	   <div class="col col-33">{{ saldo }}</div>
+	   <div class="col">Poin</div>
+	   <div class="col col-33">{{ poin }}</div>
+	  </div>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="dtl in data" type="item-text-wrap">
+        <img ng-src="{{dtl.logo}}">
+        <div><h2>{{dtl.nama}}</h2><div class="item-right">{{dtl.tujuan}}</div></div>
+        <p>Jam: {{dtl.tme}}   Harga: {{dtl.nominal}}</p>
+      </ion-item>
+    </ion-list>
+		<!--<ion-slide-box does-continue="true" auto-play="true" show-pager="false">
+
+			 <ion-slide>
+					<div class = "box box1">
+						 <h1>Box 1</h1>
+					</div>
+			 </ion-slide>
+
+			 <ion-slide>
+					<div class = "box box2">
+						 <h1>Box 2</h1>
+					</div>
+			 </ion-slide>
+
+			 <ion-slide>
+					<div class = "box box3">
+						 <h1>Box 3</h1>
+					</div>
+			 </ion-slide>
+
+		</ion-slide-box>-->
+    <!--<div class="list card">
+      <div class="item item-divider">Dompet Saya</div>
+      <div class="item item-body">
+        <div>
+					<table wi="0"><tr>
+					<td width="50%">Saldo <b>59.000</b></td>
+					<td>Bonus <b>775</b></td></tr></table>
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Health</div>
+      <div class="item item-body">
+        <div>
+          You ate an apple today!
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Upcoming</div>
+      <div class="item item-body">
+        <div>
+          You have <b>29</b> meetings on your calendar tomorrow.
+        </div>
+      </div>
+    </div>-->
+  </ion-content>
+</ion-view>

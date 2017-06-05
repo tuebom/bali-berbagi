@@ -1,0 +1,29 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Ganti PIN</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeGP()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form name="form" ng-submit="doGantiPIN(trxData)">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">PIN Lama</span>
+          <input type="password" ng-model="trxData.pinlama" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">PIN Baru</span>
+          <input type="password" ng-model="trxData.pinbaru" required>
+        </label>
+        <!--<label class="item item-input">
+          <span class="input-label">Ulang PIN</span>
+          <input type="password" ng-model="trxData.pinbaru2">
+        </label>-->
+        <label class="item">
+          <button class="button button-block button-positive" type="submit" ng-disabled="$invalid">Ganti PIN</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>
