@@ -478,7 +478,7 @@ angular.module('starter.services', [])
 			cmd: 'data'
 		}, {
 			id: 19,
-			kode: 'T7GB',
+			kode: 'T8GB',
 			info: 'Three Data (8GB reguler ikut masa aktif kartu + 16GB 4G 30 hari)',
 			cmd: 'data'
 		}, {
