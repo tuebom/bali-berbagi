@@ -49,10 +49,6 @@ angular.module('starter.controllers', [])
 				});
 		});
   })
- 
-	//$ionicPlatform.onHardwareBackButton(function() {
-        //ionic.Platform.exitApp();
-	//});
    
 })
 
@@ -170,7 +166,7 @@ angular.module('starter.controllers', [])
   };
 
   $scope.$on('$ionicView.enter', function(e) {
-	$scope.user.pin = '';
+    $scope.user.pin = '';
   });
   
   $scope.signIn = function(user) {
@@ -183,8 +179,6 @@ angular.module('starter.controllers', [])
 		pin: user.pin,
 		gcmid: user.gcmid
 	}).then(function (results) {
-		
-		//Data.toast(results);
 		
 		if (results.status == "success") {
 		
@@ -253,20 +247,6 @@ angular.module('starter.controllers', [])
 				"windows": {}
 		});
 
-		/*push.on('registration', function(data) {
-
-				var oldRegId = $localStorage.gcmid;
-				if (oldRegId !== data.registrationId) {
-						// Save new registration ID
-						$localStorage.gcmid = data.registrationId;
-						// Post registrationId to your app server as the value has changed
-				}
-		});*/
-
-		push.on('error', function(e) {
-				console.log("push error = " + e.message);
-		});
-
 		push.on('notification', function(data) {
 				
 				navigator.notification.alert(
@@ -286,11 +266,6 @@ angular.module('starter.controllers', [])
 		}
 	});
 	
-	// $scope.clearHistory = function() {
-		//$ionicHistory.clearCache();
-		//$ionicHistory.clearHistory();
-		//$ionicHistory.currentView($ionicHistory.backView());
-	// }
 })
 
 .controller('ChatsCtrl', function($scope, $state, $localStorage, $ionicHistory, $ionicPlatform, Products, Data) {
@@ -298,9 +273,6 @@ angular.module('starter.controllers', [])
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
   // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
   
 	$scope.operators = Products.all();
 
@@ -339,20 +311,6 @@ angular.module('starter.controllers', [])
 				"windows": {}
 		});
 
-		/*push.on('registration', function(data) {
-
-				var oldRegId = $localStorage.gcmid;
-				if (oldRegId !== data.registrationId) {
-						// Save new registration ID
-						$localStorage.gcmid = data.registrationId;
-						// Post registrationId to your app server as the value has changed
-				}
-		});*/
-
-		push.on('error', function(e) {
-				console.log("push error = " + e.message);
-		});
-
 		push.on('notification', function(data) {
 				
 				navigator.notification.alert(
@@ -376,11 +334,6 @@ angular.module('starter.controllers', [])
 		}
 	});
 	
-	// $scope.clearHistory = function() {
-		//$ionicHistory.clearCache();
-		//$ionicHistory.clearHistory();
-		//$ionicHistory.currentView($ionicHistory.backView());
-	// }
 })
 
 .controller('SvcDetailCtrl', function($scope, $state, $localStorage, $ionicHistory, $ionicModal, $ionicPopup, $stateParams, Products, Data) {
@@ -411,22 +364,22 @@ angular.module('starter.controllers', [])
   // Triggered in the login modal to close it
   $scope.closeTrx = function() {
     $scope.modal.hide();
-	$scope.trxData = {};
+    $scope.trxData = {};
 
-	$ionicHistory.nextViewOptions({
-		disableBack: true
-	});
-	$state.go("tab.chats");
+    // $ionicHistory.nextViewOptions({
+      // disableBack: true
+    // });
+    $state.go("tab.chats");
   };
 
   // Open the login modal
   $scope.inputNumber = function(opr) {
 	
-	$scope.trxData.token = $localStorage.token;
-	$scope.trxData.kode = opr.kode;
-	$scope.trxData.cmdPost = opr.cmd;
-    
-	$scope.modal.show();
+    $scope.trxData.token = $localStorage.token;
+    $scope.trxData.kode = opr.kode;
+    $scope.trxData.cmdPost = opr.cmd;
+      
+    $scope.modal.show();
   };
 
   // Perform the login action when the user submits the login form
@@ -484,19 +437,6 @@ angular.module('starter.controllers', [])
 				"windows": {}
 		});
 
-		/*push.on('registration', function(data) {
-
-				var oldRegId = $localStorage.gcmid;
-				if (oldRegId !== data.registrationId) {
-						// Save new registration ID
-						$localStorage.gcmid = data.registrationId;
-						// Post registrationId to your app server as the value has changed
-				}
-		});*/
-
-		push.on('error', function(e) {
-				console.log("push error = " + e.message);
-		});
 
 		push.on('notification', function(data) {
 
@@ -512,11 +452,6 @@ angular.module('starter.controllers', [])
 
   $scope.$on('$ionicView.enter', function(e) {
 
-    /*$ionicHistory.nextViewOptions({
-      disableBack: true
-      //historyRoot: true
-    });*/
-          
     // Form data for the submit modal
     $scope.trxData = {};
   });
@@ -525,7 +460,7 @@ angular.module('starter.controllers', [])
     return this.form.$invalid;
   };
 
-	$ionicPlatform.onHardwareBackButton(function() {
+	/*$ionicPlatform.onHardwareBackButton(function() {
     if($state.current.name == 'tab.tool') {
       switch($scope.context) {
           case 1:
@@ -545,7 +480,7 @@ angular.module('starter.controllers', [])
               break;
       }
     }
-	});
+	});*/
 
   // Pendaftaran member
   $ionicModal.fromTemplateUrl('templates/daftar.html', {
@@ -562,7 +497,7 @@ angular.module('starter.controllers', [])
 
   $scope.closeDF = function() {
     $scope.mdlDF.hide();
-	$state.go("tab.tool");
+    $state.go("tab.tool");
   };
 
   $scope.doRegister = function(data) {
@@ -832,11 +767,6 @@ angular.module('starter.controllers', [])
     });
   };
 	
-	// $scope.clearHistory = function() {
-		//$ionicHistory.clearCache();
-		//$ionicHistory.clearHistory();
-		//$ionicHistory.currentView($ionicHistory.backView());
-	// }
 })
 
 .controller('CekHargaCtrl', function($scope, $state, $localStorage, Products) {
@@ -895,16 +825,6 @@ angular.module('starter.controllers', [])
   });
 
 })
-
-/*.controller('SetupHargaCtrl', function($scope, $state, $ionicHistory, Products) {
-  
-	$scope.operators = Products.all();
-        
-	$scope.openItem = function(opr){
-		$state.go("tab.item-detail", { svcId: opr.id });
-	}
-
-})*/
 
 .controller('ItemDetailCtrl', function($scope, $state, $ionicPopup, $stateParams, $localStorage, $ionicLoading, $ionicPlatform, Products, Data) {
 
