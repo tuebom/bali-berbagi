@@ -19,7 +19,7 @@ angular.module('starter.controllers', [])
 				"windows": {}
 		});
 
-		push.on('registration', function(data) {
+		/*push.on('registration', function(data) {
 				//alert(data.registrationId);
 
 				var oldRegId = $localStorage.gcmid;
@@ -39,7 +39,7 @@ angular.module('starter.controllers', [])
 
 		push.on('error', function(e) {
 				console.log("push error = " + e.message);
-		});
+		});*/
 
 		push.on('notification', function(data) {
 				
@@ -77,28 +77,6 @@ angular.module('starter.controllers', [])
 				},
 				"windows": {}
 		});
-
-		/*push.on('registration', function(data) {
-
-				var oldRegId = $localStorage.gcmid;
-				if (oldRegId !== data.registrationId) {
-						
-						// Save new registration ID
-						$localStorage.gcmid = data.registrationId;
-						$scope.user.gcmid = data.registrationId;
-						
-						$ionicPopup.alert({
-							title: 'Bali Berbagi',
-							template: data.registrationId
-							//cssClass: 'animated bounceInDown'
-						});
-						// Post registrationId to your app server as the value has changed
-				}
-		});*/
-
-		/*push.on('error', function(e) {
-			console.log("push error = " + e.message);
-		});*/
 
 		push.on('notification', function(data) {
 				
@@ -225,7 +203,7 @@ angular.module('starter.controllers', [])
       // if (results.status == "success") {
       
         $scope.saldo = results.saldo;
-        $scope.poin = results.poin;
+        $scope.poin = results.spoin; //khusus bali berbagi
       // }
     });
   });
@@ -289,7 +267,7 @@ angular.module('starter.controllers', [])
       // if (results.status == "success") {
       
         $scope.saldo = results.saldo;
-        $scope.poin = results.poin;
+        $scope.poin = results.spoin; //khusus bali berbagi
       // }
     });
   });
@@ -601,7 +579,7 @@ angular.module('starter.controllers', [])
 
   $scope.closeTB = function() {
     $scope.mdlTB.hide();
-	$state.go("tab.tool");
+    $state.go("tab.tool");
   };
 
   $scope.doTransferBns = function(data) {
@@ -666,10 +644,6 @@ angular.module('starter.controllers', [])
   $scope.openCHT = function() {
     $state.go("tab.cek-histori");
   };
-
-  // $scope.openSH = function() {
-	// $state.go("tab.setup-harga");
-  // };
 
   // Ganti PIN
   $ionicModal.fromTemplateUrl('templates/gantipin.html', {
