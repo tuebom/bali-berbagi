@@ -19,7 +19,7 @@ angular.module('starter.controllers', [])
 				"windows": {}
 		});
 
-		/*push.on('registration', function(data) {
+		push.on('registration', function(data) {
 				//alert(data.registrationId);
 
 				var oldRegId = $localStorage.gcmid;
@@ -39,7 +39,7 @@ angular.module('starter.controllers', [])
 
 		push.on('error', function(e) {
 				console.log("push error = " + e.message);
-		});*/
+		});
 
 		push.on('notification', function(data) {
 				
@@ -344,9 +344,9 @@ angular.module('starter.controllers', [])
     $scope.modal.hide();
     $scope.trxData = {};
 
-    // $ionicHistory.nextViewOptions({
-      // disableBack: true
-    // });
+    $ionicHistory.nextViewOptions({
+      disableBack: true
+    });
     $state.go("tab.chats");
   };
 
@@ -363,35 +363,42 @@ angular.module('starter.controllers', [])
   // Perform the login action when the user submits the login form
   $scope.doProsesTrx = function(data) {
 
-	Data.post( data.cmdPost, {
-		kode: data.kode,
-		nopel: data.nopel,
-		tujuan: data.tujuan,
-		pin: data.pin,
-		token: data.token
-	}).then(function (results) {
-		
-		if (results.status == "success") {
-		
-			$scope.closeTrx();
-			$scope.trxData = {};
+    Data.post( data.cmdPost, {
+      kode: data.kode,
+      nopel: data.nopel,
+      tujuan: data.tujuan,
+      pin: data.pin,
+      token: data.token
+    }).then(function (results) {
+      
+      if (results.status == "success") {
+      
+        $scope.closeTrx();
+        $scope.trxData = {};
 
-			$ionicHistory.nextViewOptions({
-				disableBack: true
-				//historyRoot: true
-			});
+        $ionicHistory.nextViewOptions({
+          disableBack: true
+          //historyRoot: true
+        });
 
-			$state.go("tab.chats");
-		}
-		else
-		{
-			$ionicPopup.alert({
-				title: 'Bali Berbagi',
-				template: results.message
-			});
+        $state.go("tab.chats");
+      }
+      else
+      {
+        $ionicPopup.alert({
+          title: 'Bali Berbagi',
+          template: results.message
+        });
+      }
+    });
+  };
+
+	$ionicPlatform.onHardwareBackButton(function() {
+    if($state.current.name == 'tab.svc-detail') {
+      $ionicHistory.goBack();
 		}
 	});
-  };
+	
 })
 
 .controller('ToolCtrl', function($scope, $state, $ionicModal, $ionicPopup, $localStorage, $ionicPlatform, Data) {
