@@ -393,11 +393,11 @@ angular.module('starter.controllers', [])
     });
   };
 
-	$ionicPlatform.onHardwareBackButton(function() {
+	/*$ionicPlatform.onHardwareBackButton(function() {
     if($state.current.name == 'tab.svc-detail') {
       $ionicHistory.goBack();
 		}
-	});
+	});*/
 	
 })
 
