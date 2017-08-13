@@ -1,0 +1,156 @@
+<div class="views">
+    <div class="view view-main">
+
+        <div class="pages navbar-fixed">
+            <div data-page="daftar" class="page">
+
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="left"><a href="#" class="link icon-only back"><i class="material-icons">arrow_back</i></a></div>
+                        <div class="center">Pendaftaran Anggota</div>
+                    </div>
+                </div>
+
+                <div class="page-content">
+                  
+                  <form id="register-form" class="ajax-submit" action="http://localhost/invest-tour/api/v1/register" method="POST">
+
+                    <div class="list-block inputs-list">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Nama Lengkap</div>
+                                        <div class="item-input">
+                                            <input type="text" name="nama" placeholder="Nama lengkap" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Nomor HP</div>
+                                        <div class="item-input">
+                                            <input type="text" name="nohp" placeholder="Nomor HP" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">E-mail</div>
+                                        <div class="item-input">
+                                            <input type="email" name="email" placeholder="E-mail" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                      <a href="#" class="item-link smart-select">
+                                              <div class="item-title label">Pekerjaan</div>
+                                              <div class="item-input">
+                                                  <div class="item-after"></div>
+                                                  <select name="pekerjaan">
+                                                    <option value=""></option>
+                                                    <option value="Petani">Petani</option>
+                                                    <option value="Nelayan">Nelayan</option>
+                                                    <option value="Pedagang">Pedagang</option>
+                                                    <option value="Pegawai Negeri Sipil">Pegawai Negeri Sipil</option>
+                                                    <option value="Pegawai Swasta">Pegawai Swasta</option>
+                                                    <option value="Wiraswasta">Wiraswasta</option>
+                                                    <option value="TNI">TNI</option>
+                                                    <option value="Pensiunan">Pensiunan</option>
+                                                    <option value="Lain-lain">Lain-lain</option>
+                                                  </select>
+                                              </div>
+                                      </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Alamat</div>
+                                        <div class="item-input">
+                                            <input type="text" name="alamat" placeholder="Alamat" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                      <a href="#" class="item-link smart-select">
+                                              <div class="item-title label">Provinsi</div>
+                                              <div class="item-input">
+                                                  <div class="item-after"></div>
+                                                  <select id="provinsi" name="provinsi">
+                                                    <option value=""></option>
+                                                    <option value="11">ACEH</option>
+                                                    <option value="12">SUMATERA UTARA</option>
+                                                    <option value="13">SUMATERA BARAT</option>
+                                                    <option value="14">RIAU</option>
+                                                    <option value="15">JAMBI</option>
+                                                    <option value="16">SUMATERA SELATAN</option>
+                                                    <option value="17">BENGKULU</option>
+                                                    <option value="18">LAMPUNG</option>
+                                                    <option value="19">KEPULAUAN BANGKA BELITUNG</option>
+                                                    <option value="21">KEPULAUAN RIAU</option>
+                                                    <option value="31">DKI JAKARTA</option>
+                                                    <option value="32">JAWA BARAT</option>
+                                                    <option value="33">JAWA TENGAH</option>
+                                                    <option value="34">DI YOGYAKARTA</option>
+                                                    <option value="35">JAWA TIMUR</option>
+                                                    <option value="36">BANTEN</option>
+                                                    <option value="51">BALI</option>
+                                                    <option value="52">NUSA TENGGARA BARAT</option>
+                                                    <option value="53">NUSA TENGGARA TIMUR</option>
+                                                    <option value="61">KALIMANTAN BARAT</option>
+                                                    <option value="62">KALIMANTAN TENGAH</option>
+                                                    <option value="63">KALIMANTAN SELATAN</option>
+                                                    <option value="64">KALIMANTAN TIMUR</option>
+                                                    <option value="65">KALIMANTAN UTARA</option>
+                                                    <option value="71">SULAWESI UTARA</option>
+                                                    <option value="72">SULAWESI TENGAH</option>
+                                                    <option value="73">SULAWESI SELATAN</option>
+                                                    <option value="74">SULAWESI TENGGARA</option>
+                                                    <option value="75">GORONTALO</option>
+                                                    <option value="76">SULAWESI BARAT</option>
+                                                    <option value="81">MALUKU</option>
+                                                    <option value="82">MALUKU UTARA</option>
+                                                    <option value="91">PAPUA BARAT</option>
+                                                    <option value="92">PAPUA</option>
+                                                  </select>
+                                              </div>
+                                      </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                      <a href="#" class="item-link smart-select">
+                                              <div class="item-title label">Kota/Kabupaten</div>
+                                              <div class="item-input">
+                                                  <div class="item-after"></div>
+                                                  <select id="kota" name="kota">
+                                                  </select>
+                                              </div>
+                                      </a>
+                                     </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="content-block"><a href="#" class="button button-raised larger btnLogin">Kirim</a></div>
+                  </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

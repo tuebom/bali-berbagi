@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Bank Ikan</title>
+    <link rel="stylesheet" href="css/framework7.material.css">
+    <link rel="stylesheet" href="css/framework7.material.colors.css">
+    <link rel="stylesheet" href="css/default-style.css">
+    <link rel="stylesheet" href="css/my-app.css">
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="img/icon.png">
+    <link rel="apple-touch-icon-precomposed" href="img/icon.png">
+</head>
+
+<body>
+    <div class="statusbar-overlay"></div>
+    <div class="panel-overlay"></div>
+    <div class="panel panel-left panel-cover">
+        <div class="list-block">
+            <ul class="menu">
+                <header>
+                    <img class="responsive" src="img/logo.jpg" />
+                </header>
+                <!--<li>
+                    <a href="info-harga.html" class="item-link item-content">
+                        <div class="item-media"><i class="material-icons menu">info</i></div>
+                        <div class="item-inner menu">
+                            <div class="item-title menu">Info Harga Ikan</div>
+                        </div>
+                    </a>
+                </li>-->
+                <li>
+                    <a href="notifications.html" class="item-link item-content">
+                        <div class="item-media"><i class="material-icons menu">location_on</i></div>
+                        <div class="item-inner menu">
+                            <div class="item-title menu">Input Laporan</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="pendaftaran.html" class="item-link item-content">
+                        <div class="item-media"><i class="material-icons menu">supervisor_account</i></div>
+                        <div class="item-inner menu">
+                            <div class="item-title menu">Pendaftaran</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="belanja.html" class="item-link item-content">
+                        <div class="item-media"><i class="material-icons menu">shopping_cart</i></div>
+                        <div class="item-inner menu">
+                            <div class="item-title menu">Belanja</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html" class="item-link item-content">
+                        <div class="item-media"><i class="material-icons menu">person</i></div>
+                        <div class="item-inner menu">
+                            <div class="item-title menu">Profil</div>
+                        </div>
+                    </a>
+                </li>
+                <!--<li>
+                    <a href="setting.html" class="item-link item-content">
+                        <div class="item-media"><i class="material-icons menu">settings</i></div>
+                        <div class="item-inner menu">
+                            <div class="item-title menu">Setting</div>
+                        </div>
+                    </a>
+                </li>-->
+                <li>
+                    <a id="sign-out" href="http://localhost/invest-tour/api/v1/logout" class="item-link item-content open-login-screen">
+                        <div class="item-media"><i class="material-icons menu">power_settings_new</i></div>
+                        <div class="item-inner menu">
+                            <div class="item-title menu">Log out</div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="views">
+        <div class="view view-main">
+            <div class="pages navbar-fixed">
+            
+                <div data-page="index" class="page with-subnavbar">
+                
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="left"><a href="#" class="open-panel link icon-only"><i class="material-icons">menu</i></a></div>
+                            <div class="center">Bank Ikan</div>
+                            <div class="right">
+                                <a href="" class="link icon-only find-harga"><i class="material-icons">search</i></a>
+                                <a href="" data-popover=".popover-more-home" class="link icon-only open-popover"><i class="material-icons">more_vert</i></a>
+                            </div>
+                            <!--<div class="right"><a href="cart.html" class="link icon-only"><i class="material-icons">shopping_cart</i></a></div>-->
+                        </div>
+                    </div>
+
+                        <form class="searchbar nasional"> <!--style="display:none;"-->
+                            <div class="searchbar-input">
+                                <input type="search" placeholder="  Nama ikan">
+                                <a href="#" class="searchbar-clear"></a>
+                            </div>
+                            <a href="#" class="searchbar-cancel">Batal</a>
+                        </form>
+                        <div class="searchbar-overlay"></div>
+                        
+                        <div class="content-block searchbar-not-found">
+                                Nothing found
+                        </div>
+                 
+                  <div class="toolbar tabbar">
+                      <!-- Buttons row as tabs controller in Subnavbar-->
+                      <div class="toolbar-inner">
+                        <!-- Link to 1st tab, active -->
+                        <a href="#tab1" class="active tab-link">Hrg Nasional</a>
+                        <a href="#tab2" class="tab-link">Harga Lokal</a>
+                        <a href="#tab3" class="tab-link">Timeline</a>
+                      </div>
+                  </div>
+
+                  <!-- Tabs swipeable wrapper, required to switch tabs with swipes -->
+                  <!--<div class="tabs-swipeable-wrap swiper-container swiper-container-horizontal">-->
+                  <!--<div class="tabs-swipeable-wrap">-->
+                  <!-- Tabs, tabs wrapper -->
+                  <div class="tabs swiper-wrapper">
+
+                    <!-- Tab 1, active by default -->
+                    <div id="tab1" class="page-content tab swiper-slide active">
+                        
+                        <!--<form class="searchbar nasional">
+                            <div class="searchbar-input">
+                                <input type="search" placeholder="  Nama ikan">
+                                <a href="#" class="searchbar-clear"></a>
+                            </div>
+                            <a href="#" class="searchbar-cancel">Batal</a>
+                        </form>
+                        <div class="searchbar-overlay"></div>
+                        
+                        <div class="content-block searchbar-not-found">
+                                Nothing found
+                        </div>-->
+                 
+                        <div class="list-block list-block-search searchbar-found">
+                            <ul>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">ALBAQORA</div>
+                                            <div class="right">43.149</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">BARONANG</div>
+                                            <div class="item-after">29.116</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">BAWAL HITAM</div>
+                                            <div class="item-after">16.132</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">BAWAL PUTIH</div>
+                                            <div class="item-after">43.312</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">CAKALANG</div>
+                                            <div class="item-after">18.164</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">CUMI-CUMI</div>
+                                            <div class="item-after">10.883</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">EKOR KUNING</div>
+                                            <div class="item-after">49.923</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">GULAMAH</div>
+                                            <div class="item-after">16.966</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">GURITA</div>
+                                            <div class="item-after">35.060</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">KERAPU</div>
+                                            <div class="item-after">24.401</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">KUWE</div>
+                                            <div class="item-after">16.827</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">LAYANG</div>
+                                            <div class="item-after">10.933</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">LAYARAN</div>
+                                            <div class="item-after">4.182</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">LAYUR</div>
+                                            <div class="item-after">38.111</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">LOBSTER</div>
+                                            <div class="item-after">28.011</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">SOTONG</div>
+                                            <div class="item-after">25.721</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">TUNA</div>
+                                            <div class="item-after">44.573</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">UDANG</div>
+                                            <div class="item-after">45.703</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <ul>
+                        </div>
+                    </div>
+
+                    <!-- Tab 2 -->
+                    <div id="tab2" class="page-content tab swiper-slide"><a href="#1-2"></a>
+                        
+                        <!--<form class="searchbar lokal">
+                            <div class="searchbar-input">
+                                <input type="search" placeholder="  Nama ikan">
+                                <a href="#" class="searchbar-clear"></a>
+                            </div>
+                            <a href="#" class="searchbar-cancel">Batal</a>
+                        </form>
+                        <div class="searchbar-overlay"></div>
+                        
+                        <div class="content-block searchbar-not-found">
+                                Nothing found
+                        </div>-->
+                 
+                        <div class="list-block list-block-search searchbar-found">
+                            <ul>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">ALBAQORA</div>
+                                            <div class="item-after">43.149</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">BARONANG</div>
+                                            <div class="item-after">29.116</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">BAWAL HITAM</div>
+                                            <div class="item-after">16.132</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">BAWAL PUTIH</div>
+                                            <div class="item-after">43.312</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">CAKALANG</div>
+                                            <div class="item-after">18.164</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">CUMI-CUMI</div>
+                                            <div class="item-after">10.883</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">EKOR KUNING</div>
+                                            <div class="item-after">49.923</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">GULAMAH</div>
+                                            <div class="item-after">16.966</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">GURITA</div>
+                                            <div class="item-after">35.060</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">KERAPU</div>
+                                            <div class="item-after">24.401</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">KUWE</div>
+                                            <div class="item-after">16.827</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">LAYANG</div>
+                                            <div class="item-after">10.933</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">LAYARAN</div>
+                                            <div class="item-after">4.182</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">LAYUR</div>
+                                            <div class="item-after">38.111</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">LOBSTER</div>
+                                            <div class="item-after">28.011</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">SOTONG</div>
+                                            <div class="item-after">25.721</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">TUNA</div>
+                                            <div class="item-after">44.573</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+<li>
+                                <div class="item-content">
+                                    <!--<div class="item-media"><img src="#" width="80"></div>-->
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title followers">UDANG</div>
+                                            <div class="item-after">45.703</div>
+                                        </div>
+                                        <div class="item-subtitle">Ikan Air Laut</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <ul>
+                        </div>
+                        
+                        <!--<article>
+                          <div class="data-table card">
+                            <table>
+                              <thead>
+                                <tr>
+                                  <th>Nama Ikan</th>
+                                  <th>Jenis Ikan</th>
+                                  <th>Harga Ikan</th>
+                                </tr>
+                              </thead>
+                              <tbody id="hnas">
+                                <tr>
+                                  <td>Nama Ikan</td>
+                                  <td>Jenis Ikan</td>
+                                  <td>Harga Ikan</td>
+                                </tr>
+                                <tr>
+                                  <td>Nama Ikan</td>
+                                  <td>Jenis Ikan</td>
+                                  <td>Harga Ikan</td>
+                                </tr>
+                                <tr>
+                                  <td>Nama Ikan</td>
+                                  <td>Jenis Ikan</td>
+                                  <td>Harga Ikan</td>
+                                </tr>
+                                <tr>
+                                  <td>Nama Ikan</td>
+                                  <td>Jenis Ikan</td>
+                                  <td>Harga Ikan</td>
+                                </tr>
+                              <tbody>
+                            </table>
+                          </div>
+                        </article>-->
+                    </div>
+                    <!-- Tab 3 -->
+                    <div id="tab3" class="page-content tab swiper-slide"><a href="#1-3"></a>
+                      <div class = "card facebook-card">
+                        <div class = "card-header">
+                           <div class = "facebook-avatar"><img src = "img/user2.jpg" width = "34" height = "34"></div>
+                           <div class = "facebook-name">Jack</div>
+                           <div class = "facebook-date">Monday at 2:15 PM</div>
+                        </div>
+                        
+                        <div class = "card-content">
+                           <div class = "card-content-inner">
+                              <p>Beli ikan di pasar kedonganan..</p>
+                              <img src = "img/ikan.jpg" width = "100%">
+                              <p class = "color-gray">Likes: 112    Comments: 43</p>
+                           </div>
+                        </div>
+                        
+                        <div class = "card-footer"><a href = "#" class = "link">Like</a><a href = "#" class = "link"></a><a href = "#" class = "link">Comment</a></div>
+                      </div>
+                    </div>
+                    
+                  </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="login-screen"> <!-- modal-in-->
+      <div class="view">
+        <div data-page="login" class="page">
+            <div class="page-content login-screen-content">
+                <img class="responsive" src="img/logo.jpg" />
+                <form id="login-form" class="login ajax-submit" action="http://localhost/invest-tour/api/v1/login" method="POST">
+                    <div class="list-block inputs-list">
+                        <ul>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">Email</div>
+                                    <div class="item-input">
+                                        <input type="text" id="usermail" name="usermail" placeholder="Your email" />
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">Password</div>
+                                    <div class="item-input">
+                                        <input type="password" id="userpass" name="userpass" placeholder="Your password" />
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="content-block"><a href="#" class="button button-raised larger btnLogin">Log In</a></div>
+                </form>
+            </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="popover popover-more-home">
+        <div class="popover-angle"></div>
+        <div class="popover-inner">
+            <div class="list-block">
+                <ul>
+                    <li><a href="#" class="list-button item-link home">Update status</a></li>
+                    <li><a href="#" class="list-button item-link home">Chat</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/framework7.js"></script>
+    <script type="text/javascript" src="js/my-app.js"></script>
+    <!-- PhoneGap -->
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+</body>
+
+</html>
