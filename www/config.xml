@@ -34,7 +34,6 @@
   <preference name="android-installLocation" value="auto"/>
   <preference name="android-build-tool" value="gradle" /> 
   
-  <gap:plugin name="cordova-plugin-battery-status"/>
   <gap:plugin name="cordova-plugin-camera"/>
   <gap:plugin name="cordova-plugin-media-capture"/>
   <gap:plugin name="cordova-plugin-console"/>
