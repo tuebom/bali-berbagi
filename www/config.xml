@@ -35,14 +35,9 @@
   <!--<preference name="android-build-tool" value="gradle" />-->
   
   <plugin name="cordova-plugin-camera" spec="^6.3.0" />
-        <variable name="CAMERA_USAGE_DESCRIPTION" value="Allow the app to use your camera" />
-        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Allow the app to use your photos" />
-  </plugin>
   <plugin name="cordova-plugin-media-capture" spec="^6.3.0" />
   <gap:plugin name="cordova-plugin-console" source="npm" />
   <plugin name="cordova-plugin-contacts" spec="^6.3.0" />
-      <variable name="CONTACTS_USAGE_DESCRIPTION" value="Allow the app to use your contacts" />
-  </plugin>
   <gap:plugin name="cordova-plugin-device" source="npm" />
   <gap:plugin name="cordova-plugin-dialogs" source="npm" />
   <!--<gap:plugin name="cordova-plugin-file" source="npm" />
