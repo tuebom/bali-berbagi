@@ -119,7 +119,7 @@ myApp.onPageInit('pulsa', function (page) {
 
   function onSuccess(contacts) {
       //alert('Found ' + contacts.length + ' contacts.');
-      $$('.tujuan').val(contacts[0].phoneNumbers);
+      $$('.tujuan').val(contacts[0].phoneNumbers[0].value);
   }
    
   function onError(contactError) {
@@ -130,7 +130,7 @@ myApp.onPageInit('pulsa', function (page) {
      
     // find all contacts with 'Bob' in any name field 
     var options      = new ContactFindOptions();
-    // options.filter   = "Bob";
+    options.filter   = "";
     options.multiple = true;
     options.desiredFields = [navigator.contacts.fieldType.phoneNumbers];
     options.hasPhoneNumber = true;
