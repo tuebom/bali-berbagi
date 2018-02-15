@@ -32,22 +32,25 @@
   <preference name="disable-cursor" value="false"/>
   <preference name="android-minSdkVersion" value="14"/>
   <preference name="android-installLocation" value="auto"/>
-  <preference name="android-build-tool" value="gradle" /> 
+  <!--<preference name="android-build-tool" value="gradle" />-->
   
-  <gap:plugin name="cordova-plugin-camera" source="npm" />
-  <gap:plugin name="cordova-plugin-media-capture" source="npm" />
+  <plugin name="cordova-plugin-camera" spec="^6.3.0" />
+        <variable name="CAMERA_USAGE_DESCRIPTION" value="Allow the app to use your camera" />
+        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Allow the app to use your photos" />
+  </plugin>
+  <plugin name="cordova-plugin-media-capture" spec="^6.3.0" />
   <gap:plugin name="cordova-plugin-console" source="npm" />
-  <gap:plugin name="cordova-plugin-contacts" source="npm" />
+  <plugin name="cordova-plugin-contacts" spec="^6.3.0" />
+      <variable name="CONTACTS_USAGE_DESCRIPTION" value="Allow the app to use your contacts" />
+  </plugin>
   <gap:plugin name="cordova-plugin-device" source="npm" />
-  <gap:plugin name="cordova-plugin-device-motion" source="npm" />
-  <gap:plugin name="cordova-plugin-device-orientation" source="npm" />
   <gap:plugin name="cordova-plugin-dialogs" source="npm" />
-  <gap:plugin name="cordova-plugin-file" source="npm" />
-  <gap:plugin name="cordova-plugin-file-transfer" source="npm" />
-  <gap:plugin name="cordova-plugin-geolocation" source="npm" />
+  <!--<gap:plugin name="cordova-plugin-file" source="npm" />
+  <gap:plugin name="cordova-plugin-file-transfer" source="npm" />-->
+  <gap:plugin name="cordova-plugin-geolocation" spec="^6.3.0" />
   <gap:plugin name="cordova-plugin-globalization" source="npm" />
   <gap:plugin name="cordova-plugin-inappbrowser" source="npm" />
-  <gap:plugin name="cordova-plugin-media" source="npm" />
+  <!--<gap:plugin name="cordova-plugin-media" spec="^6.3.0" />-->
   <gap:plugin name="cordova-plugin-network-information" source="npm" />
   <gap:plugin name="cordova-plugin-splashscreen" source="npm" />
   <gap:plugin name="cordova-plugin-vibration" source="npm" />
