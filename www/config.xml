@@ -34,7 +34,7 @@
   <preference name="android-installLocation" value="auto"/>
   <!--<preference name="android-build-tool" value="gradle" />-->
   
-  <plugin name="cordova-plugin-camera" spec="~4.0.2" />
+  <plugin name="cordova-plugin-camera" source="https://github.com/apache/cordova-plugin-camera.git" />
   <plugin name="cordova-plugin-media-capture" spec="^6.3.0" />
   <gap:plugin name="cordova-plugin-console" source="npm" />
   <plugin name="cordova-plugin-contacts" spec="~3.0.1" />
