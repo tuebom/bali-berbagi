@@ -42,7 +42,7 @@
   <gap:plugin name="cordova-plugin-dialogs" source="npm" />
   <!--<gap:plugin name="cordova-plugin-file" source="npm" />
   <gap:plugin name="cordova-plugin-file-transfer" source="npm" />-->
-  <gap:plugin name="cordova-plugin-geolocation" spec="^6.3.0" />
+  <plugin name="cordova-plugin-geolocation" spec="~4.0.1" />
   <gap:plugin name="cordova-plugin-globalization" source="npm" />
   <gap:plugin name="cordova-plugin-inappbrowser" source="npm" />
   <!--<gap:plugin name="cordova-plugin-media" spec="^6.3.0" />-->
