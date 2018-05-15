@@ -27,6 +27,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('backbutton', this.onBackButton, false);
     },
     // deviceready Event Handler
     //
@@ -34,6 +35,18 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+    },
+    onBackButton: function(e) {
+      var page = myApp.getCurrentView().activePage;
+      myApp.hidePreloader();
+      e.preventDefault();
+      if(page.name=="index") {
+        navigator.app.clearHistory();
+        navigator.app.exitApp();
+      } else {
+        mainView.router.back();
+        //Admob.showBanner(AdMob.AD_POSITION.BOTTOM_CENTER);
+      }
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {

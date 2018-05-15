@@ -99,9 +99,11 @@ myApp.onPageInit('pulsa', function (page) {
     var str = $$('.tujuan').val();
     if (str.length == 4) {
       $$.getJSON ('http://localhost/invest-tour/api/v1/pulsa?hlr='+str, function (json) {
+        
         //Template7.data['url:productlist.html'] = json;
         //console.log(json); // Is definitely passing back data
         //myApp.alert(json, 'Pulsa HP');
+        
         $$('#nominal').html('');
         $$.each(json, function(i) {
           //console.log(json[i].nominal);
@@ -128,14 +130,22 @@ myApp.onPageInit('pulsa', function (page) {
 
   $$('.contact').on('click', function(e){
      
+    navigator.contacts.pickContact(function(contact){
+            //console.log('The following contact has been selected:' + JSON.stringify(contact));
+            $$('.tujuan').val(contact.phoneNumbers[0].value);
+        },function(err){
+            //console.log('Error: ' + err);
+            alert('Error: ' + err);
+        });
+
     // find all contacts with 'Bob' in any name field 
-    var options      = new ContactFindOptions();
-    options.filter   = "";
-    options.multiple = true;
-    options.desiredFields = [navigator.contacts.fieldType.phoneNumbers];
-    options.hasPhoneNumber = true;
-    var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.phoneNumbers];
-    navigator.contacts.find(fields, onSuccess, onError, options);  
+    // var options      = new ContactFindOptions();
+    // options.filter   = "";
+    // options.multiple = true;
+    // options.desiredFields = [navigator.contacts.fieldType.phoneNumbers];
+    // options.hasPhoneNumber = true;
+    // var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.phoneNumbers];
+    // navigator.contacts.find(fields, onSuccess, onError, options);  
   });
 
   $$('#btnSend').on('click', function(e){
