@@ -3,6 +3,10 @@ var $$ = Dom7;
 
 var AdMob = null;
 
+localStorage.setItem('pin', '7715');
+localStorage.setItem('lastOpened', new Date().getTime());
+localStorage.setItem('RegId', 'eAqzZwYCbrk:APA91bFvOWcMy4NdUhtJpWH3alwDvshxMOj_QMQ0updhsZN5MiThYVBj_ZUChpMQV3IVnILXmwyyGmWoA4I-BUuPTTgv2NNLsqAlOAYGvaExW_8ZbLaWtGBzwGHSFcYFYizIUhijntPY');
+
 var la = localStorage.getItem('lastOpened');
 // console.log('la: ', la)
 
@@ -13,7 +17,7 @@ var msec = ca - la;
 var mins = Math.floor(msec / 60000);
 var hrs = Math.floor(mins / 60);
 
-// console.log('hrs: ', hrs)
+console.log('hrs: ', hrs)
 
 // Framework7.use(Framework7Keypad);
 
@@ -120,25 +124,29 @@ var app  = new Framework7({
         var nohp  = localStorage.getItem('nohp');
         var pin   = localStorage.getItem('pin');
         var gcmid = localStorage.getItem('RegId');
+        // console.log('mbrid ', mbrid)
+
+        this.data.mbrid = mbrid;
+        this.data.nohp = nohp;
+        this.data.pin = pin;
 
         var formData = {};
         formData.mbrid = mbrid;
         formData.nohp  = nohp;
         formData.pin   = pin;
-        formData.gcmid = RegId;
+        formData.gcmid = gcmid;
   
-        app.preloader.show();
+        this.preloader.show();
 
-        app.request.post('http://212.24.111.23/bali/auth/login', formData, function (res) {
+        this.request.post('http://212.24.111.23/bali/auth/login', formData, function (res) {
     
           app.preloader.hide();
           var data = JSON.parse(res);
+          // console.log('data: ', data)
       
           if (data.status) {
-          
-            app.data.mbrid = mbrid;
-            app.data.nohp = nohp;
-            app.data.pin = pin;
+
+            // set data token
             app.data.token = data.token;
             
             // ambil informasi saldo member
