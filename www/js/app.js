@@ -3,6 +3,18 @@ var $$ = Dom7;
 
 var AdMob = null;
 
+var la = localStorage.getItem('lastOpened');
+// console.log('la: ', la)
+
+var ca = new Date().getTime();
+// console.log('ca: ', ca)
+
+var msec = ca - la;
+var mins = Math.floor(msec / 60000);
+var hrs = Math.floor(mins / 60);
+
+// console.log('hrs: ', hrs)
+
 // Framework7.use(Framework7Keypad);
 
 // Framework7 App main instance
@@ -229,19 +241,6 @@ var swiper = app.swiper.create('.swiper-container', {
 });
 
 swiper.autoplay.start();
-
-
-var la = localStorage.getItem('lastOpened');
-// console.log('la: ', la)
-
-var ca = new Date().getTime();
-// console.log('ca: ', ca)
-
-var msec = ca - la;
-var mins = Math.floor(msec / 60000);
-var hrs = Math.floor(mins / 60);
-
-// console.log('hrs: ', hrs)
 
 // cek selisih waktu, jika lebih tampilkan form login
 if (hrs > 8) {
