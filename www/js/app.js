@@ -3,9 +3,9 @@ var $$ = Dom7;
 
 var AdMob = null;
 
-localStorage.setItem('pin', '7715');
-localStorage.setItem('lastOpened', new Date().getTime());
-localStorage.setItem('RegId', 'eAqzZwYCbrk:APA91bFvOWcMy4NdUhtJpWH3alwDvshxMOj_QMQ0updhsZN5MiThYVBj_ZUChpMQV3IVnILXmwyyGmWoA4I-BUuPTTgv2NNLsqAlOAYGvaExW_8ZbLaWtGBzwGHSFcYFYizIUhijntPY');
+// localStorage.setItem('pin', '7715');
+// localStorage.setItem('lastOpened', new Date().getTime());
+// localStorage.setItem('RegId', 'eAqzZwYCbrk:APA91bFvOWcMy4NdUhtJpWH3alwDvshxMOj_QMQ0updhsZN5MiThYVBj_ZUChpMQV3IVnILXmwyyGmWoA4I-BUuPTTgv2NNLsqAlOAYGvaExW_8ZbLaWtGBzwGHSFcYFYizIUhijntPY');
 
 var la = localStorage.getItem('lastOpened');
 // console.log('la: ', la)
@@ -17,7 +17,7 @@ var msec = ca - la;
 var mins = Math.floor(msec / 60000);
 var hrs = Math.floor(mins / 60);
 
-console.log('hrs: ', hrs)
+// console.log('hrs: ', hrs)
 
 // Framework7.use(Framework7Keypad);
 
