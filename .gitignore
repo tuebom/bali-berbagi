@@ -1,3 +1,5 @@
 node_modules/
-www/backup
+www/backup/
+www2/
 server.js
+.gitignore
