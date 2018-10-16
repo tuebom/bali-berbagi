@@ -41,7 +41,8 @@ var app  = new Framework7({
     // },
   },
   on: {
-    init: function () {
+
+    init: function () { // sama dengan onDeviceReady
 
       /*function copyDatabaseFile(dbName) {
 
@@ -76,7 +77,9 @@ var app  = new Framework7({
       // copyDatabaseFile('acc.db').then(function () {
         // // success! :)
         // app.data.db = window.sqlitePlugin.openDatabase({name: 'acc.db'});
-/*         var currentDate = new Date();
+
+        /*
+        var currentDate = new Date();
         var month = currentDate.getMonth() + 1;
         var year = currentDate.getFullYear();
         
@@ -86,17 +89,64 @@ var app  = new Framework7({
           tx.executeSql('insert into setup (nama, bulan, tahun) values (?, ?, ?);', ['Nama Usaha Anda',month,year]);
         }, function(error) {
           app.dialog.alert('insert error: ' + error.message);
-        });      
- */        
+        });  */
+         
       // }).catch(function (err) {
         // // error! :(
         // console.log(err);
       // });
       
-      $$('#my-login-screen [name="mbrid"]').val(localStorage.getItem('mbrid'));
-      $$('#my-login-screen [name="nohp"]').val(localStorage.getItem('nohp'));
+      if (hrs > 8) {
 
-      /*
+        // jika lebih 8 jam, setup info login terakhir kali
+        $$('#my-login-screen [name="mbrid"]').val(localStorage.getItem('mbrid'));
+        $$('#my-login-screen [name="nohp"]').val(localStorage.getItem('nohp'));
+
+      } else {
+
+        var mbrid = localStorage.getItem('mbrid');
+        var nohp  = localStorage.getItem('nohp');
+        var pin   = localStorage.getItem('pin');
+        var gcmid = localStorage.getItem('RegId');
+
+        var formData = {};
+        formData.mbrid = mbrid;
+        formData.nohp  = nohp;
+        formData.pin   = pin;
+        formData.gcmid = RegId;
+  
+        app.preloader.show();
+
+        app.request.post('http://212.24.111.23/bali/auth/login', formData, function (res) {
+    
+          app.preloader.hide();
+          var data = JSON.parse(res);
+      
+          if (data.status) {
+          
+            app.data.mbrid = mbrid;
+            app.data.nohp = nohp;
+            app.data.pin = pin;
+            app.data.token = data.token;
+            
+            // ambil informasi saldo member
+            app.request.get('http://212.24.111.23/bali/member/saldo/'+mbrid, function (res) {
+                
+              var data = JSON.parse(res);
+          
+              if (data.status) {
+                $$('.saldo').text(parseInt(data.saldo).toLocaleString('ID'));
+                app.data.saldo = parseInt(data.saldo);
+              } else {
+                app.dialog.alert(data.message, 'Akun Saya');
+              }
+            });
+      
+          }
+        });
+      }
+    
+      //*
       this.data.push = PushNotification.init({
         "android": {
             "senderID": "597497239727"
@@ -145,7 +195,7 @@ var app  = new Framework7({
             }
           });
         }, 1000);
-      }); */
+      }); //*/
     },     
   },
   // App routes
@@ -157,49 +207,43 @@ var app  = new Framework7({
 });
 
 
+// Init/Create left panel view
+var mainView = app.views.create('.view-left', {
+  url: '/'
+});
+
+// Init/Create main view
+var mainView = app.views.create('.view-main', {
+  url: '/'
+});
+
+var swiper = app.swiper.create('.swiper-container', {
+    speed: 400,
+    //slidesPerView: auto,
+    loop: true,
+    //autoHeight: true,
+    shortSwipes: false,
+    longSwipes: false,
+    //effect:'fade'
+    //spaceBetween: 100
+});
+
+swiper.autoplay.start();
+
+
 var la = localStorage.getItem('lastOpened');
-console.log('la: ', la)
+// console.log('la: ', la)
 
 var ca = new Date().getTime();
-console.log('ca: ', ca)
+// console.log('ca: ', ca)
 
 var msec = ca - la;
 var mins = Math.floor(msec / 60000);
 var hrs = Math.floor(mins / 60);
 
-console.log('hrs: ', hrs)
+// console.log('hrs: ', hrs)
 
-// if (hrs > 8) {
-
-//   var ls = app.loginScreen.create({ el: '.login-screen' });
-//   ls.open(false);
-
-// } else {
-
-  // Init/Create left panel view
-  var mainView = app.views.create('.view-left', {
-    url: '/'
-  });
-
-  // Init/Create main view
-  var mainView = app.views.create('.view-main', {
-    url: '/'
-  });
-
-  var swiper = app.swiper.create('.swiper-container', {
-      speed: 400,
-      //slidesPerView: auto,
-      loop: true,
-      //autoHeight: true,
-      shortSwipes: false,
-      longSwipes: false,
-      //effect:'fade'
-      //spaceBetween: 100
-  });
-
-  swiper.autoplay.start();
-// }
-
+// cek selisih waktu, jika lebih tampilkan form login
 if (hrs > 8) {
 
   var ls = app.loginScreen.create({ el: '#my-login-screen' });
@@ -353,7 +397,7 @@ $$('#my-login-screen .login-button').on('click', function () {
     
       localStorage.setItem('mbrid', mbrid);
       localStorage.setItem('nohp', nohp);
-      // console.log('localStorage.setItem')
+      localStorage.setItem('pin', pin);
 
       app.loginScreen.close('#my-login-screen');
       
